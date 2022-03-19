@@ -50,17 +50,14 @@ public class PhoneBook {
     }
 
     public String reverseLookup(String phoneNumber)  {
-//        List<String> contact = new LinkedList<>();
-//
-//        for(String name : phonebook.keySet()){
-//            contact.add(name);
-//        }
+        List<String> contact = new LinkedList<>();
+
         boolean match = false;
         String output = "";
         Iterator<Map.Entry<String, List<String>>> itr = phonebook.entrySet().iterator();
         while(itr.hasNext() && !match){
             Map.Entry<String, List<String>> entry = itr.next();
-            if(entry.getValue().equals(phoneNumber)){
+            if(entry.getValue().contains(phoneNumber)){
                 output = entry.getKey();
                 match = true;
             }
