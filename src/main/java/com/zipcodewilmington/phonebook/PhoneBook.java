@@ -50,12 +50,38 @@ public class PhoneBook {
     }
 
     public String reverseLookup(String phoneNumber)  {
+//        List<String> contact = new LinkedList<>();
+//
+//        for(String name : phonebook.keySet()){
+//            contact.add(name);
+//        }
+        boolean match = false;
+        String output = "";
+        Iterator<Map.Entry<String, List<String>>> itr = phonebook.entrySet().iterator();
+        while(itr.hasNext() && !match){
+            Map.Entry<String, List<String>> entry = itr.next();
+            if(entry.getValue().equals(phoneNumber)){
+                output = entry.getKey();
+                match = true;
+            }
+        }
 
-        return null;
+        return output;
     }
 
-    public List<String> getAllContactNames() {
-        return null;
+    public List<String> getAllContactNames() {      //Works but out of order
+        List<String> number = new LinkedList<>();
+        for(String name : phonebook.keySet()){
+            number.add(name);
+        }
+        return number;
+
+//        List<String> number = new ArrayList<>();
+//        for(String name : phonebook.keySet()){
+//            number.add(name);
+//        }
+//        return number;
+
     }
 
     public Map<String, List<String>> getMap() {
